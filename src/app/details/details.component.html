@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <nav class="navbar">
+
+            <a routerLink='/' class="btn btn-info btn-lg btn-block" (click)="goBack()">
+                <span class="glyphicon glyphicon-chevron-left"></span> Go back
+            </a>
+
+    </nav>
+    <div class="card-wrapper">
+
+            <div class="card">
+                    <div *ngIf="post">
+                        <h2 class="text-center">Details</h2>
+                        <p> Post Id: {{postId}} </p>
+                        <p> Post Id: {{post .id}} </p>
+                        <p> User Id: {{post .userId}} </p>
+                        <p> Title: {{post .title}} </p>
+                        <p> Body: {{post .body}} </p>
+                    </div>
+            </div>
+
+    </div>
+</div>
+

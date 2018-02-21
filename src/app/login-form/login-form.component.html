@@ -1,0 +1,26 @@
+<form class="form-login" (ngSubmit)="loginUser($event)"  #loginForm="ngForm">
+  <alert type="success">
+  <p>Username: Admin</p>
+  <p>Password: Admin111</p>
+  </alert>
+
+  <h2 class="form-signin-heading">Please login</h2>
+
+  <input id="username" type="text" class="form-control" name="username" [(ngModel)]="user.username" placeholder="User name"  minlength="5" #username="ngModel" required autofocus />
+  <div *ngIf="username.errors?.required && username.touched" class="alert alert-danger"> 
+      Name required. 
+  </div>
+  <div *ngIf="username.errors?.minlength" class="alert alert-danger"> 
+      Name must be at least 5 characters long.
+  </div> 
+
+  <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" #password="ngModel" required/>
+  <div *ngIf="password.errors?.required &&  password.touched" class="alert alert-danger"> 
+      Password required. 
+  </div>
+  <div *ngIf="password.errors?.pattern" class="alert alert-danger"> 
+      Password must contain 8 characters, at least one one small letter, at least one capital letter, at least one number.
+  </div> 
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!loginForm.form.valid">Login</button>
+</form>

@@ -1,0 +1,25 @@
+@import  '../../node_modules/bootstrap/less/variables';
+@import '../../less/_mixins';
+
+.card-wrapper {
+  margin: 0 auto;
+  padding: 1em;
+  background-color: @body-bg;
+  height: 100%;
+  .card {
+    cursor: pointer;
+    background-color: @body-bg;
+    padding: 1em;
+    display: block;
+    overflow-y: hidden;
+    height: auto;
+    margin-top:  1em;
+    color: #212121;
+    text-overflow: ellipsis;
+    border: 2px solid #eeeeee;
+    border-bottom-width: 4px;
+    .border-radius();
+    .box-shadow(1px 5px 1px 1px rgba(102,102,102,0.4));
+  }
+}
+
