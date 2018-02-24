@@ -18,7 +18,7 @@ export class PostService {
     }
 
 
-      getPostDetails(id) {
+    getPostDetails(id) {
         return this.http.get(this.apiUrl+'/'+id, {params: {userId: '1'}});
       }
 

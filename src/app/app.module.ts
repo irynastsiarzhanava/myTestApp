@@ -16,7 +16,6 @@ import { DetailsComponent } from './details/details.component';
 import { AuthguardGuard} from './_services/authguard.guard'
 import { UserService} from './_services/user.service';
 import { PostService} from './_services/post.service';
-import { DataService} from './_services/data.service';
 
 import { ReversePipe } from './_pipes/reverse.pipe';
 import { FilterPipe } from './_pipes/filter.pipe';
@@ -24,7 +23,7 @@ import { FilterPipe } from './_pipes/filter.pipe';
 const appRoutes: Routes = [
 	{
 	   path: '',
-	   redirectTo: '/login',
+	   redirectTo: '/dashboard',
 	   pathMatch: 'full'
 	},
 	{
@@ -33,13 +32,13 @@ const appRoutes: Routes = [
 	},
 	{
 	   path: 'dashboard',
-	   canActivate: [AuthguardGuard],
+	   //canActivate: [AuthguardGuard],
 	   component: DashboardComponent
 	},
-            {
-                path: 'posts/:id',
-                component: DetailsComponent
-            },
+      {
+          path: 'posts/:id',
+          component: DetailsComponent
+      },
 	{
 	    path: '**',
 	    component: NotfoundComponent
@@ -64,7 +63,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, AuthguardGuard, PostService, DataService],
+  providers: [UserService, AuthguardGuard, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

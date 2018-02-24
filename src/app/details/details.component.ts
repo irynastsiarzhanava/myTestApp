@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location} from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import { PostService } from '../_services/post.service';
-import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-details',
@@ -12,29 +12,23 @@ import { DataService } from '../_services/data.service';
 })
 export class DetailsComponent implements OnInit {
 
-data : any=[];
+
 post: any={};
-postId: any;
-id: any;
 
-constructor(private router: Router, private detailsService: PostService, private dataService:DataService, private route: ActivatedRoute) { 
-
-  }
-
-  ngOnInit() {
-    this.dataService.currentId.subscribe(post=> this.postId = post['id']);     
-
-    this.detailsService.getPostDetails(this.postId).subscribe(post => {
-            this.post = post;
-            console.log(post);
-            this.postId = post['id'];
-            console.log(this.postId);
-          });
+constructor(private postService: PostService, private route: ActivatedRoute, private location: Location) { 
 }
 
+ngOnInit(): void {
+  this.getPost();
+}
 
+getPost(): void {
+  const id = +this.route.snapshot.paramMap.get('id');
+  this.postService.getPostDetails(id)
+    .subscribe(post => this.post = post);
+}
 
-goBack() {
-      this.router.navigate(['dashboard']);
-    }
+goBack(): void{
+  this.location.back();
+}
 }

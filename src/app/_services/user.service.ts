@@ -10,15 +10,15 @@ private isUserLoggedIn;
 
 
   constructor() {
-  	this.isUserLoggedIn = false;
+        this.isUserLoggedIn = false;
   }
 
   setUserLoggedIn() {
-  	this.isUserLoggedIn = true;
+        this.isUserLoggedIn = true;
   }
 
 
   getUserLoggedIn() {
-  	return this.isUserLoggedIn;
+        return this.isUserLoggedIn;
   }
 }
