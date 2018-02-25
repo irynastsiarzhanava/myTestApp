@@ -3,7 +3,7 @@ import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes} from '@angular/router';
-import { AlertModule } from 'ngx-bootstrap';
+import { AlertModule, ModalModule } from 'ngx-bootstrap';
 import { StorageServiceModule} from 'angular-webstorage-service';
 
 
@@ -19,6 +19,7 @@ import { PostService} from './_services/post.service';
 
 import { ReversePipe } from './_pipes/reverse.pipe';
 import { FilterPipe } from './_pipes/filter.pipe';
+import { ModalContentComponent } from './modal-content/modal-content.component';
 
 const appRoutes: Routes = [
 	{
@@ -32,7 +33,7 @@ const appRoutes: Routes = [
 	},
 	{
 	   path: 'dashboard',
-	   //canActivate: [AuthguardGuard],
+	   canActivate: [AuthguardGuard],
 	   component: DashboardComponent
 	},
       {
@@ -53,17 +54,19 @@ const appRoutes: Routes = [
     DashboardComponent,
     LoginFormComponent,
     NotfoundComponent,
-    DetailsComponent
+    DetailsComponent,
+    ModalContentComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     AlertModule.forRoot(),
+    ModalModule.forRoot(),
     BrowserModule,
     StorageServiceModule,
     FormsModule,
     HttpClientModule
   ],
   providers: [UserService, AuthguardGuard, PostService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, ModalContentComponent]
 })
 export class AppModule { }
